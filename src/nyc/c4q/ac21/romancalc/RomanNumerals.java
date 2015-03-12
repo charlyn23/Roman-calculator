@@ -1,22 +1,85 @@
 package nyc.c4q.ac21.romancalc;
 
-import java.util.Scanner;
-
 /**
  * Code to convert to and from Roman numerals.
+ * Formats a number in Roman numerals.
+ *
+ * @param value The value to format.
+ * @return The value in Roman numerals.
+ * // 1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 9,5, 4, 1
  */
 
+
 public class RomanNumerals {
-    /**
-     * Formats a number in Roman numerals.
-     * @param value
-     *   The value to format.
-     * @return
-     *   The value in Roman numerals.
-     */
-    static String format(int value) {
-        // TODO: Group 1: Write this function!
-        return "???";
+    public static String format(int value) {
+        if (value <= 0 || value > 3999)
+            return "Error: not a valid Roman Numeral";
+        String num$ = "";               //represents integer # inputted.
+
+        while (value >= 1000) {        //Start with largest place. 1000's place.
+            num$ += "M";               //Print M for each multiple of 1000;
+            value = value - 1000;      //Remove 1000 from number. ex: 1984 = 1000 + 900 + 80 + 4
+        }                                       //MCMLXXIV
+        while (value >= 900) {
+            num$ += "CM";   //         //100 less than a 1000. ex: 984 = 900 (CM) + 80 + 4
+            value = value - 900;
+        }
+        while (value >= 500) {
+            num$ += "D";
+            value = value - 500;
+        }
+        while (value >= 400) {
+            num$ += "CD";
+            value = value - 400;
+        }
+        while (value >= 100) {
+            num$ += "C";
+            value -= 100;
+        }
+        while (value >= 90) {
+            num$ += "XC";
+            value -= 90;
+        }
+        while (value >= 60) {
+            num$ += "LX";
+            value -= 60;
+        }
+        while (value >= 50) {
+            num$ += "L";
+            value -= 50;
+        }
+        while (value >= 40) {
+            num$ += "XL";
+            value -= 40;
+        }
+        while (value >= 30) {
+            num$ += "XXX";
+            value -= 30;
+        }
+        while (value >= 20) {
+            num$ += "XX";
+            value -= 20;
+        }
+        while (value >= 10) {
+            num$ += "X";
+            value -= 10;
+        }
+        while (value >= 9) {
+            num$ += "IX";
+            value -= 9;
+        }
+        while (value >= 5) {
+            num$ += "V";
+            value -= 5;
+        }
+        while (value >= 4) {
+            num$ += "IV";
+        }
+        while  (value >= 1) {
+            num$ += "I";
+            value -= 1;
+        }
+        return num$;
     }
 
     /**
